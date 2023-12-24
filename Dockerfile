@@ -21,6 +21,9 @@ RUN echo "root:root" | chpasswd
 # set password of ${USER} to ${USER}
 RUN echo "${USER}:${USER}" | chpasswd
 
+RUN locale-gen zh_CN.UTF-8
+ENV LC_ALL "zh_CN.UTF-8"
+
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends apt-utils sudo git curl wget ca-certificates python3 python3-numpy fluxbox && \
     apt-get install -y --no-install-recommends tigervnc-standalone-server tigervnc-common && \
