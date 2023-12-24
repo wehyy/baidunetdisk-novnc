@@ -21,9 +21,6 @@ RUN echo "root:root" | chpasswd
 # set password of ${USER} to ${USER}
 RUN echo "${USER}:${USER}" | chpasswd
 
-RUN locale-gen zh_CN.UTF-8
-ENV LC_ALL "zh_CN.UTF-8"
-
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends apt-utils sudo git curl wget ca-certificates python3 python3-numpy fluxbox && \
     apt-get install -y --no-install-recommends tigervnc-standalone-server tigervnc-common && \
@@ -33,7 +30,7 @@ RUN apt-get update -y && \
     git clone https://github.com/novnc/websockify /opt/noVNC-1.4.0/utils/websockify && \
     rm -rf /opt/noVNC-1.4.0/utils/websockify/.git /tmp/noVNC.tar.gz && \
     mv /opt/noVNC-1.4.0/vnc_lite.html /opt/noVNC-1.4.0/index.html && \
-    sed -i 's/<title>noVNC<\/title>/<title>百度云网盘客户端<\/title>/g' /opt/noVNC-1.4.0/index.html && \
+    sed -i 's/<title>noVNC<\/title>/<title>baidunetdisk client<\/title>/g' /opt/noVNC-1.4.0/index.html && \
     apt-get remove -y git-man git && \
     apt-get clean
 
